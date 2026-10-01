@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/SpeechifyInc/loqo/compare/sdk-v0.1.0...sdk-v0.1.1) (2026-10-01)
+
+
+### Bug Fixes
+
+* **sdk,adapters,payload:** publish to gh packages ([ff44cca](https://github.com/SpeechifyInc/loqo/commit/ff44cca37578402b049effc523db84f6eb20a9d1))
+
 ## 0.1.0 (2026-09-21)
 
 

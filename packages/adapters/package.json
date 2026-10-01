@@ -1,6 +1,6 @@
 {
   "name": "@speechifyinc/loqo-adapters",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "loqo adapters for string catalogs in a repository: iOS .xcstrings, Android values XML, flat JSON.",
   "license": "MIT",
   "repository": {

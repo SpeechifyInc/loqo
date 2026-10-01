@@ -1,6 +1,6 @@
 {
   "name": "@speechifyinc/loqo-sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The loqo adapter contract and a typed HTTP client for the platform API.",
   "license": "MIT",
   "repository": {
