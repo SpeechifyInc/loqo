@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="import_scan_limit_reached">يمكنك استيراد ما يصل إلى <xliff:g id="count" example="5">%1$d</xliff:g> صفحة دفعة واحدة</string>
+</resources>

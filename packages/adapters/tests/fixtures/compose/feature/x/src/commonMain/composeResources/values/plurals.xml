@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="ai_chat_message_chapters">
+        <item quantity="one">%1$d Chapter</item>
+        <item quantity="other">%1$d Chapters</item>
+    </plurals>
+    <plurals name="ai_chat_quiz_chapters">
+        <item quantity="one">Quiz · %1$d Chapter</item>
+        <item quantity="other">Quiz · %1$d Chapters</item>
+    </plurals>
+    <plurals name="hours_ago">
+        <item quantity="one">%1$s hour ago</item>
+        <item quantity="other">%1$s hours ago</item>
+    </plurals>
+</resources>

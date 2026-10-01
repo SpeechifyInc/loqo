@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_email_invalid">Please enter a valid email address</string>
+    <string name="import_scan_limit_reached">You can import up to %1$d pages at once</string>
+    <string name="search_empty_message">No results found for "%1$s"</string>
+</resources>

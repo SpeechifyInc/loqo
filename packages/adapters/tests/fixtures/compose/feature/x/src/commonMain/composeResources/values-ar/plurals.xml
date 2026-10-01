@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <plurals name="ai_chat_message_chapters">
+    <item quantity="zero">%1$d فصول</item>
+    <item quantity="one">الفصل <xliff:g id="count" example="5">%1$d</xliff:g></item>
+    <item quantity="two">فصلان <xliff:g id="count" example="5">%1$d</xliff:g></item>
+    <item quantity="few">%1$d فصول</item>
+    <item quantity="many"><xliff:g id="count" example="5">%1$d</xliff:g> فصول</item>
+    <item quantity="other">%1$d فصول</item>
+  </plurals>
+  <plurals name="ai_chat_quiz_chapters">
+    <item quantity="zero">اختبار · <xliff:g id="count" example="5">%1$d</xliff:g> فصول</item>
+    <item quantity="one">اختبار · <xliff:g id="count" example="5">%1$d</xliff:g> فصول</item>
+    <item quantity="two">اختبار · <xliff:g id="count" example="5">%1$d</xliff:g> فصلين</item>
+    <item quantity="few">اختبار · <xliff:g id="count" example="5">%1$d</xliff:g> فصول</item>
+    <item quantity="many">اختبار · <xliff:g id="count" example="5">%1$d</xliff:g> فصول</item>
+    <item quantity="other">اختبار · <xliff:g id="count" example="5">%1$d</xliff:g> فصول</item>
+  </plurals>
+</resources>

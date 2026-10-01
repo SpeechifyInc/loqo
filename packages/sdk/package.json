@@ -1,0 +1,31 @@
+{
+  "name": "@loqo/sdk",
+  "version": "0.1.0",
+  "description": "The loqo adapter contract and a typed HTTP client for the platform API.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teimurjan/loqo.git",
+    "directory": "packages/sdk"
+  },
+  "homepage": "https://loqo.dev",
+  "type": "module",
+  "exports": {
+    ".": {
+      "bun": "./src/index.ts",
+      "browser": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "rm -rf dist && NODE_ENV=production bun build src/index.ts --outdir dist --target node --format esm --packages external && tsc -p tsconfig.build.json"
+  }
+}

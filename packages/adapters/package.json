@@ -1,0 +1,37 @@
+{
+  "name": "@loqo/adapters",
+  "version": "0.1.0",
+  "description": "loqo adapters for string catalogs in a repository: iOS .xcstrings, Android values XML, flat JSON.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teimurjan/loqo.git",
+    "directory": "packages/adapters"
+  },
+  "homepage": "https://loqo.dev",
+  "type": "module",
+  "exports": {
+    ".": {
+      "bun": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@loqo/sdk": "workspace:*",
+    "unllm": "^2.1.0"
+  },
+  "bin": {
+    "loqo-sync": "./dist/bin.js"
+  },
+  "scripts": {
+    "build": "rm -rf dist && NODE_ENV=production bun build src/index.ts src/bin.ts --outdir dist --target node --format esm --packages external --splitting && tsc -p tsconfig.build.json"
+  }
+}

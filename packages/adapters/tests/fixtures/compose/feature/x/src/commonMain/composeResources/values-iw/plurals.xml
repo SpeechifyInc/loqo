@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <plurals name="ai_chat_message_chapters">
+    <item quantity="one">פרק <xliff:g id="count" example="5">%1$d</xliff:g></item>
+    <item quantity="two">%1$d פרקים</item>
+    <item quantity="other">%1$d פרקים</item>
+  </plurals>
+  <plurals name="hours_ago">
+    <item quantity="one">לפני שעה</item>
+    <item quantity="two">לפני שעתיים</item>
+    <item quantity="other">לפני %1$s שעות</item>
+  </plurals>
+</resources>

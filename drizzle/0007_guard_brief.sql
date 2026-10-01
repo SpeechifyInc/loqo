@@ -1,0 +1,1 @@
+ALTER TABLE "guards" ADD COLUMN "brief" text;
