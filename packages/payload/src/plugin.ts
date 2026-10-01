@@ -19,7 +19,7 @@ export type LoqoPluginOptions = ServiceOptions & {
   admin?: false | { controls?: boolean; view?: false | { path?: `/${string}` }; importPath?: string };
 };
 
-const DEFAULT_IMPORT_PATH = '@loqo/payload';
+const DEFAULT_IMPORT_PATH = '@speechifyinc/loqo-payload';
 
 /** Where the plugin leaves its service on the config, for app code that has a `payload` and a job for it. */
 const CUSTOM_KEY = 'loqo';

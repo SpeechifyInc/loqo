@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://loqo.dev",
-  "repository": "git+https://github.com/teimurjan/loqo.git",
+  "repository": "git+https://github.com/SpeechifyInc/loqo.git",
   "type": "module",
   "workspaces": [
     "packages/*"
@@ -15,8 +15,7 @@
     "test": "bun test",
     "typecheck": "tsc --noEmit",
     "build:packages": "for p in sdk adapters payload; do bun run --cwd packages/$p build || exit 1; done",
-    "pack:packages": "bun run build:packages && mkdir -p dist/packages && for p in sdk adapters payload; do (cd packages/$p && bun pm pack --quiet --destination ../../dist/packages) || exit 1; done",
-    "setup:npm-oidc": "bun scripts/release/setup-npm-oidc.ts"
+    "pack:packages": "bun run build:packages && mkdir -p dist/packages && for p in sdk adapters payload; do (cd packages/$p && bun pm pack --quiet --destination ../../dist/packages) || exit 1; done"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^4.0.54",
@@ -29,7 +28,7 @@
     "@codemirror/view": "^6.43.13",
     "@jitl/quickjs-wasmfile-release-sync": "^0.32.0",
     "@lezer/highlight": "^1.2.5",
-    "@loqo/sdk": "workspace:*",
+    "@speechifyinc/loqo-sdk": "workspace:*",
     "@tanstack/react-query": "^5.102.8",
     "@tanstack/react-virtual": "^3.14.13",
     "@xyflow/react": "^12.11.6",
@@ -56,7 +55,7 @@
     "zod": "^4.6.5"
   },
   "devDependencies": {
-    "@loqo/adapters": "workspace:*",
+    "@speechifyinc/loqo-adapters": "workspace:*",
     "@types/bun": "^1.4.2",
     "@types/pg": "^8.23.1",
     "@types/react": "^19.3.0",

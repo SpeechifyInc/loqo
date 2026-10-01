@@ -1,5 +1,5 @@
 import { basename, dirname, join } from 'node:path';
-import { type Adapter, pluralCategories, pluralSpecifiers, type PulledResource, type PushResource, unwrapAndroidQuotes } from '@loqo/sdk';
+import { type Adapter, pluralCategories, pluralSpecifiers, type PulledResource, type PushResource, unwrapAndroidQuotes } from '@speechifyinc/loqo-sdk';
 import {
   compositeKey,
   discoverFiles,

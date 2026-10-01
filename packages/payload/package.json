@@ -1,11 +1,11 @@
 {
-  "name": "@loqo/payload",
+  "name": "@speechifyinc/loqo-payload",
   "version": "0.1.0",
   "description": "loqo adapter and plugin for Payload CMS: documents in, translations back, inside your app.",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/teimurjan/loqo.git",
+    "url": "git+https://github.com/SpeechifyInc/loqo.git",
     "directory": "packages/payload"
   },
   "homepage": "https://loqo.dev",
@@ -37,13 +37,13 @@
     "src"
   ],
   "publishConfig": {
-    "access": "public"
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "build": "bun build.ts"
   },
   "dependencies": {
-    "@loqo/sdk": "workspace:*"
+    "@speechifyinc/loqo-sdk": "workspace:*"
   },
   "peerDependencies": {
     "@lexical/headless": ">=0.30",

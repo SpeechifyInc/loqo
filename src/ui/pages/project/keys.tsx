@@ -73,7 +73,7 @@ export const ApiKeysSection = ({ slug }: { slug: string }) => {
       <CardHeader>
         <CardTitle>API keys</CardTitle>
         <CardDescription>
-          What your repo's sync step authenticates with. A key is bound to this project and one role; pass it to <code>createClient</code> from <code>@loqo/sdk</code>.
+          What your repo's sync step authenticates with. A key is bound to this project and one role; pass it to <code>createClient</code> from <code>@speechifyinc/loqo-sdk</code>.
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-3">

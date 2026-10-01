@@ -1,4 +1,4 @@
-import type { Adapter, PulledResource, PushResource } from '@loqo/sdk';
+import type { Adapter, PulledResource, PushResource } from '@speechifyinc/loqo-sdk';
 import { readTextIfExists, toFileLocale, writeText } from './files';
 
 /** How a written file lays its keys out. */

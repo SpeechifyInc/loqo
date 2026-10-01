@@ -1,4 +1,4 @@
-import { isPlainObject, type Path } from '@loqo/sdk';
+import { isPlainObject, type Path } from '@speechifyinc/loqo-sdk';
 
 /**
  * The slice of a Payload field config the adapter reads. Structural so the pure parts of the

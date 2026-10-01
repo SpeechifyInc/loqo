@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'bun:test';
-import { createClient } from '@loqo/sdk';
+import { createClient } from '@speechifyinc/loqo-sdk';
 import type { CollectionAfterChangeHook, CollectionAfterDeleteHook, Config, Payload, PayloadRequest } from 'payload';
 import { LOQO_CONTEXT, payloadAdapter } from '../src/adapter';
 import { loqoPlugin, loqoServiceOf } from '../src/plugin';
@@ -136,9 +136,9 @@ describe('loqoPlugin', () => {
     const config = await plugin(base);
     expect(config.collections?.map((collection) => (collection.hooks?.afterChange ?? []).length)).toEqual([1, 0]);
     expect(config.globals?.map((global) => (global.hooks?.afterChange ?? []).length)).toEqual([1]);
-    expect(config.collections?.map((collection) => collection.admin?.components?.edit?.beforeDocumentControls)).toEqual([['@loqo/payload/client#TranslateControls'], undefined]);
-    expect(config.globals?.[0]?.admin?.components?.elements?.beforeDocumentControls).toEqual(['@loqo/payload/client#TranslateControls']);
-    expect(config.admin?.components?.views?.loqo).toEqual({ Component: '@loqo/payload/rsc#TranslationStatusView', path: '/loqo' });
+    expect(config.collections?.map((collection) => collection.admin?.components?.edit?.beforeDocumentControls)).toEqual([['@speechifyinc/loqo-payload/client#TranslateControls'], undefined]);
+    expect(config.globals?.[0]?.admin?.components?.elements?.beforeDocumentControls).toEqual(['@speechifyinc/loqo-payload/client#TranslateControls']);
+    expect(config.admin?.components?.views?.loqo).toEqual({ Component: '@speechifyinc/loqo-payload/rsc#TranslationStatusView', path: '/loqo' });
     expect(config.endpoints?.map((endpoint) => `${endpoint.method} ${endpoint.path}`)).toEqual([
       'get /loqo/status',
       'post /loqo/import',

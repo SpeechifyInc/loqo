@@ -1,4 +1,4 @@
-import { isPlainObject } from '@loqo/sdk';
+import { isPlainObject } from '@speechifyinc/loqo-sdk';
 import type { LexicalNode } from './rich-text';
 
 /**

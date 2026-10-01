@@ -15,7 +15,7 @@
         "@codemirror/view": "^6.43.13",
         "@jitl/quickjs-wasmfile-release-sync": "^0.32.0",
         "@lezer/highlight": "^1.2.5",
-        "@loqo/sdk": "workspace:*",
+        "@speechifyinc/loqo-sdk": "workspace:*",
         "@tanstack/react-query": "^5.102.8",
         "@tanstack/react-virtual": "^3.14.13",
         "@xyflow/react": "^12.11.6",
@@ -42,7 +42,7 @@
         "zod": "^4.6.5",
       },
       "devDependencies": {
-        "@loqo/adapters": "workspace:*",
+        "@speechifyinc/loqo-adapters": "workspace:*",
         "@types/bun": "^1.4.2",
         "@types/pg": "^8.23.1",
         "@types/react": "^19.3.0",
@@ -53,21 +53,21 @@
       },
     },
     "packages/adapters": {
-      "name": "@loqo/adapters",
+      "name": "@speechifyinc/loqo-adapters",
       "version": "0.1.0",
       "bin": {
         "loqo-sync": "./dist/bin.js",
       },
       "dependencies": {
-        "@loqo/sdk": "workspace:*",
+        "@speechifyinc/loqo-sdk": "workspace:*",
         "unllm": "^2.1.0",
       },
     },
     "packages/payload": {
-      "name": "@loqo/payload",
+      "name": "@speechifyinc/loqo-payload",
       "version": "0.1.0",
       "dependencies": {
-        "@loqo/sdk": "workspace:*",
+        "@speechifyinc/loqo-sdk": "workspace:*",
       },
       "devDependencies": {
         "@lexical/headless": "0.41.0",
@@ -105,7 +105,7 @@
       ],
     },
     "packages/sdk": {
-      "name": "@loqo/sdk",
+      "name": "@speechifyinc/loqo-sdk",
       "version": "0.1.0",
     },
   },
@@ -414,11 +414,11 @@
 
     "@lezer/lr": ["@lezer/lr@1.4.10", "", { "dependencies": { "@lezer/common": "^1.0.0" } }, "sha512-rnCpTIBafOx4mRp43xOxDJbFipJm/c0cia/V5TiGlhmMa+wsSdoGmUN3w5Bqrks/09Q/D4tNAmWaT8p6NRi77A=="],
 
-    "@loqo/adapters": ["@loqo/adapters@workspace:packages/adapters"],
+    "@speechifyinc/loqo-adapters": ["@speechifyinc/loqo-adapters@workspace:packages/adapters"],
 
-    "@loqo/payload": ["@loqo/payload@workspace:packages/payload"],
+    "@speechifyinc/loqo-payload": ["@speechifyinc/loqo-payload@workspace:packages/payload"],
 
-    "@loqo/sdk": ["@loqo/sdk@workspace:packages/sdk"],
+    "@speechifyinc/loqo-sdk": ["@speechifyinc/loqo-sdk@workspace:packages/sdk"],
 
     "@marijn/find-cluster-break": ["@marijn/find-cluster-break@1.0.4", "", {}, "sha512-Wy0V7+SGUjnF9/TkiM1hKVDPj7jKXduPNboMVtHTA8dySMURWqfg/JZ9E2Sq8JgSJmkl7k7Qe9FLeMSrSraWmQ=="],
 

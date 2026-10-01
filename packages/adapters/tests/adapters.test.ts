@@ -2,7 +2,7 @@ import { describe, expect, test } from 'bun:test';
 import { cp, mkdir, mkdtemp, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { type PulledResource, pluralCategories, type PushResource, pulledTarget } from '@loqo/sdk';
+import { type PulledResource, pluralCategories, type PushResource, pulledTarget } from '@speechifyinc/loqo-sdk';
 import { androidXml, parseAndroidResources } from '../src/android-xml';
 import { compositeKey, discoverFiles, globToRegExp } from '../src/files';
 import { json } from '../src/json';

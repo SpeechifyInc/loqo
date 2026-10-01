@@ -1,4 +1,4 @@
-import { SPECIFIER_TYPES, unwrapAndroidQuotes } from '@loqo/sdk';
+import { SPECIFIER_TYPES, unwrapAndroidQuotes } from '@speechifyinc/loqo-sdk';
 import { hasTag } from '../model/types';
 import type { ValueProcessor } from './types';
 

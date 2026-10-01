@@ -1,4 +1,4 @@
-import { type Adapter, defineAdapter, isPlainObject, type ProjectRef, type PulledResource, type PushRejection, type PushResource } from '@loqo/sdk';
+import { type Adapter, defineAdapter, isPlainObject, type ProjectRef, type PulledResource, type PushRejection, type PushResource } from '@speechifyinc/loqo-sdk';
 import type { CollectionSlug, GlobalSlug, Payload, Where } from 'payload';
 import { type Describe, type DocumentOptions, documentToResources, localeWrites, rowsWithUnstableId } from './document';
 import { buildFieldConfigMap, type FieldConfigMap, type FieldLike } from './fields';

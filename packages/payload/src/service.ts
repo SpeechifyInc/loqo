@@ -12,7 +12,7 @@ import {
   type SyncSummary,
   syncRemote,
   type SyncRemoteResult,
-} from '@loqo/sdk';
+} from '@speechifyinc/loqo-sdk';
 import type { Payload, Where } from 'payload';
 import { type PayloadAdapterOptions, payloadAdapter, pullCollection, pullDocument } from './adapter';
 import { type DocumentRef, documentPrefix, entityTag } from './keys';
@@ -24,7 +24,7 @@ export type ServiceOptions = Omit<PayloadAdapterOptions, 'codec'> & {
   /** The platform project's slug. */
   project: string;
   collections: readonly string[];
-  /** Defaults to the app's own Lexical editor config (`@loqo/payload/lexical`). */
+  /** Defaults to the app's own Lexical editor config (`@speechifyinc/loqo-payload/lexical`). */
   codec?: (payload: Payload) => Promise<LexicalCodec>;
 };
 

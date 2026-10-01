@@ -1,4 +1,4 @@
-import { type Adapter, isPlaceholderOnlyKey, pluralSpecifiers, type PulledResource, type PushResource } from '@loqo/sdk';
+import { type Adapter, isPlaceholderOnlyKey, pluralSpecifiers, type PulledResource, type PushResource } from '@speechifyinc/loqo-sdk';
 import { clean } from 'unllm';
 import {
   compositeKey,

@@ -8,7 +8,7 @@ import {
   type LocaleContext,
   localizedText,
   objects,
-} from '@loqo/sdk';
+} from '@speechifyinc/loqo-sdk';
 import { type FieldConfigMap, fieldConfigAt, isNonProseField, lengthMeta } from './fields';
 import { extractRichText, isLexicalNode, type LexicalCodec } from './rich-text';
 

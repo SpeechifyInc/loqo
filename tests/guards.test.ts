@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, describe, expect, test } from 'bun:test';
-import { isPlaceholderOnlyKey } from '@loqo/sdk';
+import { isPlaceholderOnlyKey } from '@speechifyinc/loqo-sdk';
 import { createGuardPool, type GuardPool, type GuardRepair, tryGuard } from '../src/core/guards';
 import type { ValueContext } from '../src/core/model/types';
 import type { GuardRow } from '../src/db/schema';

@@ -1,11 +1,11 @@
 {
-  "name": "@loqo/adapters",
+  "name": "@speechifyinc/loqo-adapters",
   "version": "0.1.0",
   "description": "loqo adapters for string catalogs in a repository: iOS .xcstrings, Android values XML, flat JSON.",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/teimurjan/loqo.git",
+    "url": "git+https://github.com/SpeechifyInc/loqo.git",
     "directory": "packages/adapters"
   },
   "homepage": "https://loqo.dev",
@@ -22,10 +22,10 @@
     "src"
   ],
   "publishConfig": {
-    "access": "public"
+    "registry": "https://npm.pkg.github.com"
   },
   "dependencies": {
-    "@loqo/sdk": "workspace:*",
+    "@speechifyinc/loqo-sdk": "workspace:*",
     "unllm": "^2.1.0"
   },
   "bin": {

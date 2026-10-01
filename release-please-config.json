@@ -5,8 +5,8 @@
   "bump-minor-pre-major": true,
   "initial-version": "0.1.0",
   "packages": {
-    "packages/sdk": {},
-    "packages/adapters": {},
-    "packages/payload": {}
+    "packages/sdk": { "component": "sdk" },
+    "packages/adapters": { "component": "adapters" },
+    "packages/payload": { "component": "payload" }
   }
 }

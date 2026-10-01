@@ -15,8 +15,8 @@ Self-hosted, LLM-driven localization for software. Adapters pull strings out of 
 ```
   repository / CMS                        loqo (Bun)                          LLM providers
 ┌──────────────────┐   POST /import   ┌──────────────────────┐   provider:model   ┌───────────┐
-│ @loqo/adapters   │ ───────────────▶ │ server ── Postgres   │ ────────────────▶  │ OpenAI    │
-│ @loqo/payload    │                  │   │      (drizzle,   │   translate ▸      │ Anthropic │
+│ @speechifyinc/loqo-adapters   │ ───────────────▶ │ server ── Postgres   │ ────────────────▶  │ OpenAI    │
+│ @speechifyinc/loqo-payload    │                  │   │      (drizzle,   │   translate ▸      │ Anthropic │
 │ your adapter     │ ◀─────────────── │ worker ◀─ pg-boss)   │   enhance ▸ guards │ …         │
 └──────────────────┘ GET /translations└──────────────────────┘                    └───────────┘
 ```
@@ -38,10 +38,10 @@ cp .env.example .env      # fill in GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, OPEN
 docker compose up -d      # Postgres + app on http://localhost:3000
 ```
 
-Migrations and the built-in layers, prompts and scenarios are applied on startup. Sign in, create a project, then mint an API key on it and sync from a repository:
+Migrations and the built-in layers, prompts and scenarios are applied on startup. Sign in, create a project, then mint an API key on it and sync from a repository. The packages live on Speechify's GitHub Packages registry, so the consuming repo needs `@speechifyinc:registry=https://npm.pkg.github.com` and a `read:packages` token in its `.npmrc`:
 
 ```sh
-npx -p @loqo/adapters loqo-sync request --adapter xcstrings --project my-app \
+npx -p @speechifyinc/loqo-adapters loqo-sync request --adapter xcstrings --project my-app \
   --base-url https://translate.example.com --api-key $LOQO_API_KEY
 ```
 

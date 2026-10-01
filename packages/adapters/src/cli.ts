@@ -1,6 +1,6 @@
 import { appendFileSync, writeFileSync } from 'node:fs';
 import { parseArgs } from 'node:util';
-import { type Adapter, type ApiResult, applyTranslations, createClient, importResources, type StatusCounts } from '@loqo/sdk';
+import { type Adapter, type ApiResult, applyTranslations, createClient, importResources, type StatusCounts } from '@speechifyinc/loqo-sdk';
 import { androidXml } from './android-xml';
 import { json, type JsonKeyOrder } from './json';
 import { xcstrings } from './xcstrings';

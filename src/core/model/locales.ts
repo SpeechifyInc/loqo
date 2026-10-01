@@ -1,4 +1,4 @@
-export { pluralCategories } from '@loqo/sdk';
+export { pluralCategories } from '@speechifyinc/loqo-sdk';
 
 const displayNames = new Intl.DisplayNames(['en'], { type: 'language', fallback: 'code' });
 

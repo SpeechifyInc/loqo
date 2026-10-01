@@ -2,7 +2,7 @@ import { afterAll, beforeAll, describe, expect, test } from 'bun:test';
 import { createProviderRegistry } from 'ai';
 import { MockLanguageModelV4, MockProviderV4 } from 'ai/test';
 import { eq } from 'drizzle-orm';
-import { pulledTarget, type PulledResource } from '@loqo/sdk';
+import { pulledTarget, type PulledResource } from '@speechifyinc/loqo-sdk';
 import type { ResolvedConfig } from '../src/config';
 import { signIn } from '../src/core/auth/service';
 import { createGuardPool } from '../src/core/guards';

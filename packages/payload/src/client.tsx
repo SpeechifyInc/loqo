@@ -1,6 +1,6 @@
 'use client';
 
-import type { StatusCounts, SyncSummary, TargetStatus } from '@loqo/sdk';
+import type { StatusCounts, SyncSummary, TargetStatus } from '@speechifyinc/loqo-sdk';
 import { Button, toast, useConfig, useDocumentInfo } from '@payloadcms/ui';
 import { useCallback, useEffect, useState } from 'react';
 import type { DocumentStatus, ProjectStatus } from './service';

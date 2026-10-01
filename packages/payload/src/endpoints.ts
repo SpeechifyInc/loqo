@@ -1,4 +1,4 @@
-import type { ApiResult } from '@loqo/sdk';
+import type { ApiResult } from '@speechifyinc/loqo-sdk';
 import type { Endpoint, PayloadRequest } from 'payload';
 import { addDataAndFileToRequest } from 'payload';
 import type { DocumentRef } from './keys';

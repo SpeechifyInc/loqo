@@ -1,7 +1,7 @@
 /**
  * `node-scoped`: release-please's `node` release type, attributed by conventional-commit scope
  * instead of by path alone. A commit counts towards a package only when its scope names the
- * package — `feat(sdk): …` releases @loqo/sdk, `feat(sdk,payload): …` both, `feat: …` nothing —
+ * package — `feat(sdk): …` releases @speechifyinc/loqo-sdk, `feat(sdk,payload): …` both, `feat: …` nothing —
  * on top of the path split release-please already does, so it must touch the package too.
  *
  * The release pull request also moves the package's version in `bun.lock`: `bun pm pack` resolves
