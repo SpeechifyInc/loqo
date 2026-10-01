@@ -1,6 +1,6 @@
 {
   "name": "@speechifyinc/loqo-payload",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "loqo adapter and plugin for Payload CMS: documents in, translations back, inside your app.",
   "license": "MIT",
   "repository": {

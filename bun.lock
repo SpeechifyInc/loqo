@@ -54,7 +54,7 @@
     },
     "packages/adapters": {
       "name": "@speechifyinc/loqo-adapters",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "bin": {
         "loqo-sync": "./dist/bin.js",
       },
@@ -65,7 +65,7 @@
     },
     "packages/payload": {
       "name": "@speechifyinc/loqo-payload",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "dependencies": {
         "@speechifyinc/loqo-sdk": "workspace:*",
       },
@@ -106,7 +106,7 @@
     },
     "packages/sdk": {
       "name": "@speechifyinc/loqo-sdk",
-      "version": "0.1.0",
+      "version": "0.1.1",
     },
   },
   "packages": {
