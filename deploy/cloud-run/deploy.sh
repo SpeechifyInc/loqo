@@ -24,9 +24,8 @@ for name in DATABASE_POOL_SIZE TRANSLATE_BATCH_SIZE TRANSLATE_CONCURRENCY TRANSL
   if [ -n "${!name:-}" ]; then env_vars+=("$name=${!name}"); fi
 done
 secrets=()
-for name in "${SECRET_ENV[@]}"; do
-  if secret_exists "$name"; then secrets+=("$name=$(secret_name "$name"):latest"); fi
-done
+# Not probed: a deployer with only secretAccessor can't see whether a secret exists.
+for name in "${SECRET_ENV[@]}"; do secrets+=("$name=$(secret_name "$name"):latest"); done
 join() { local IFS=,; echo "$*"; }
 
 # The worker polls the queue between requests, so CPU stays allocated and one instance stays up.
