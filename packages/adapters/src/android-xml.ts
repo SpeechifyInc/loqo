@@ -208,12 +208,13 @@ export const androidXml = (options: AndroidXmlOptions): Adapter => {
 
         for (const resource of parsed) {
           const translatable = resource.attrs.translatable !== 'false';
-          const formatted = resource.attrs.formatted;
-          const base = { filePath, key: resource.name, formatted };
+          const identity = { filePath, key: resource.name };
+          // `formatted` is an attribute, not identity: toggling it must not re-key the resource.
+          const base = { ...identity, formatted: resource.attrs.formatted };
 
           if (resource.kind === 'string') {
             resources.push({
-              key: compositeKey(base),
+              key: compositeKey(identity),
               source: resource.value,
               tags: ['android', 'string'],
               meta: { ...base },
@@ -232,7 +233,7 @@ export const androidXml = (options: AndroidXmlOptions): Adapter => {
             for (const item of items) {
               const tags = ['android', 'plural', ...('synthesized' in item ? ['synthesized'] : [])];
               resources.push({
-                key: compositeKey({ ...base, quantity: item.quantity }),
+                key: compositeKey({ ...identity, quantity: item.quantity }),
                 source: item.value,
                 tags,
                 meta: { ...base, quantity: item.quantity, pluralSpecifiers: shared },
@@ -243,7 +244,7 @@ export const androidXml = (options: AndroidXmlOptions): Adapter => {
           } else {
             resource.items.forEach(({ value }, index) => {
               resources.push({
-                key: compositeKey({ ...base, index }),
+                key: compositeKey({ ...identity, index }),
                 source: value,
                 tags: ['android', 'string-array'],
                 meta: { ...base, index },
@@ -290,7 +291,7 @@ export const androidXml = (options: AndroidXmlOptions): Adapter => {
             const parsed = parseCompositeKey(resource.key);
             const key = parsed?.key;
             if (!value?.trim() || typeof key !== 'string') continue;
-            const formatted = typeof parsed?.formatted === 'string' ? parsed.formatted : undefined;
+            const formatted = typeof resource.meta.formatted === 'string' ? resource.meta.formatted : undefined;
             const [kind, part]: [Group['kind'], Part] =
               typeof parsed?.quantity === 'string' ? ['plurals', parsed.quantity] : typeof parsed?.index === 'number' ? ['string-array', parsed.index] : ['string', ''];
             if (kind === 'plurals' && !categories.has(String(part))) continue;

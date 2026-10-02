@@ -1,6 +1,7 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { Link, useNavigate, useParams, useSearchParams } from 'react-router';
+import { useNavigate, useParams, useSearchParams } from 'react-router';
 import { Empty, ErrorNote, PageHeader } from '../../components/layout';
+import { ResourceKey } from '../../components/resource-key';
 import { PageSkeleton, TableSkeleton } from '../../components/skeletons';
 import { Stat } from '../../components/stat';
 import { OriginBadge, StatusBadge } from '../../components/status';
@@ -72,11 +73,7 @@ const columnsFor = ({ onTag, onStatus }: ColumnActions): Column<ResourceListItem
     key: 'key',
     header: 'Key',
     className: 'w-[30%] align-top',
-    cell: (resource) => (
-      <Link to={`/resources/${resource.id}`} className="font-mono text-xs text-primary hover:underline">
-        {truncate(resource.key, 70)}
-      </Link>
-    ),
+    cell: (resource) => <ResourceKey id={resource.id} resource={resource} max={70} />,
   },
   {
     key: 'tags',

@@ -147,6 +147,22 @@ describe('android adapter', () => {
     const de = await Bun.file(join(dir, 'app/src/main/res/values-de/strings.xml')).text();
     expect(de).toContain('<string name="with_xliff">"Verschoben "<xliff:g id="count" example="5">"%1$d"</xliff:g>" Dateien \\"fett\\""</string>');
   });
+
+  test('formatted stays out of the key and is written back from meta', async () => {
+    const dir = await scratch();
+    const file = 'app/src/main/res/values/strings.xml';
+    const write = async (path: string, body: string) => {
+      await mkdir(join(dir, path, '..'), { recursive: true });
+      await writeFile(join(dir, path), `<resources>\n  ${body}\n</resources>\n`);
+    };
+    await write(file, '<string name="done" formatted="false">100% done</string>');
+    await write('app/src/main/res/values-de/strings.xml', '<string name="done">100% fertig</string>');
+    const adapter = androidXml({ root: dir });
+    const { resources } = await adapter.pull!({ project });
+    expect(resources).toMatchObject([{ key: compositeKey({ filePath: file, key: 'done' }), meta: { formatted: 'false' } }]);
+    await adapter.push!({ project }, translated(resources));
+    expect(await Bun.file(join(dir, 'app/src/main/res/values-de/strings.xml')).text()).toContain('<string name="done" formatted="false">100% fertig</string>');
+  });
 });
 
 /** What `GET /translations` hands back: every pulled value as translated, except the ones `rejected` holds back. */

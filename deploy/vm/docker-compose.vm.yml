@@ -1,0 +1,13 @@
+# Layered over docker-compose.yml by install.sh: a real Postgres password, data in a host
+# directory, containers back after a reboot.
+services:
+  postgres:
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
+    volumes:
+      - ${LOQO_DATA_DIR:?}:/var/lib/postgresql/data
+  app:
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgres://loqo:${POSTGRES_PASSWORD:?}@postgres:5432/loqo

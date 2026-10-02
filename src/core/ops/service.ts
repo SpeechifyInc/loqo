@@ -11,6 +11,7 @@ export type QueueItem = {
   resourceId: string;
   projectSlug: string;
   key: string;
+  meta: Record<string, unknown>;
   locale: string;
   status: TargetStatus;
   source: string;
@@ -27,6 +28,7 @@ export type QueueStatus = {
     resourceId: string;
     locale: string;
     key: string;
+    meta: Record<string, unknown>;
     projectSlug: string;
     status: TargetStatus;
     lastError: string | null;
@@ -51,6 +53,7 @@ export const queueStatus = async (db: Db, queue: TranslateQueue, projectIds?: st
         resourceId: targets.resourceId,
         projectSlug: projects.slug,
         key: resources.key,
+        meta: resources.meta,
         locale: targets.locale,
         status: targets.status,
         source: resources.source,
@@ -68,6 +71,7 @@ export const queueStatus = async (db: Db, queue: TranslateQueue, projectIds?: st
         resourceId: targets.resourceId,
         locale: targets.locale,
         key: resources.key,
+        meta: resources.meta,
         projectSlug: projects.slug,
         status: targets.status,
         lastError: targets.lastError,
@@ -94,6 +98,7 @@ export type SuspiciousTarget = {
   projectSlug: string;
   locale: string;
   key: string;
+  meta: Record<string, unknown>;
   value: string | null;
 };
 
@@ -106,6 +111,7 @@ export const suspiciousTargets = async (db: Db, projectIds?: string[]): Promise<
       projectSlug: projects.slug,
       locale: targets.locale,
       key: resources.key,
+      meta: resources.meta,
       value: targets.value,
     })
     .from(targets)

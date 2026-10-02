@@ -4,6 +4,7 @@ import { type ReactNode, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router';
 import { FlowCanvas } from '../../components/flow/canvas';
 import { Empty, ErrorNote } from '../../components/layout';
+import { keyParts } from '../../components/resource-key';
 import { CanvasLoader } from '../../components/skeletons';
 import { Badge } from '../../components/ui/badge';
 import { Button } from '../../components/ui/button';
@@ -99,9 +100,6 @@ const SourcePanel = ({ resource }: { resource: ResourceDetail }) => {
   );
 };
 
-/** File adapters key a resource by a JSON of its parts and repeat them in `meta`; the inner key reads as the title, the rest sits in the Source panel. */
-const titleOf = (resource: ResourceDetail): string => (typeof resource.meta.key === 'string' ? resource.meta.key : resource.key);
-
 const ResourceSkeleton = () => (
   <div className="flex h-full flex-col gap-4">
     <div className="grid gap-2">
@@ -145,6 +143,7 @@ export const ResourcePage = () => {
 
   if (resource.isPending) return <ResourceSkeleton />;
   if (!data) return <ErrorNote error={resource.error ?? new Error('Resource not found')} />;
+  const { name, variant } = keyParts(data);
 
   return (
     <div className="flex h-full flex-col gap-4">
@@ -153,8 +152,8 @@ export const ResourcePage = () => {
           <ArrowLeft className="size-4" /> {data.project.name}
         </Link>
         <div className="mt-1 flex items-center gap-2">
-          <h1 className="min-w-0 break-all font-mono text-lg font-semibold leading-tight">{titleOf(data)}</h1>
-          {typeof data.meta.quantity === 'string' ? <Badge variant="outline">{data.meta.quantity}</Badge> : null}
+          <h1 className="min-w-0 break-all font-mono text-lg font-semibold leading-tight">{name}</h1>
+          {variant ? <Badge variant="outline">{variant}</Badge> : null}
           <CopyButton value={data.key} />
         </div>
       </div>

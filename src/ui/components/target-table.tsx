@@ -1,15 +1,11 @@
 import type { ReactNode } from 'react';
-import { Link } from 'react-router';
-import { cn, truncate } from '../lib/utils';
+import { cn } from '../lib/utils';
 import { Empty } from './layout';
+import { ResourceKey } from './resource-key';
 import { TableSkeleton } from './skeletons';
 import { type Column, VirtualTable } from './virtual-table';
 
-export const keyCell = (row: { resourceId: string; key: string }) => (
-  <Link to={`/resources/${row.resourceId}`} className="font-mono text-xs text-primary hover:underline">
-    {truncate(row.key, 60)}
-  </Link>
-);
+export const keyCell = (row: { resourceId: string; key: string; meta: Record<string, unknown> }) => <ResourceKey id={row.resourceId} resource={row} max={60} />;
 
 export const projectColumn = { key: 'project', header: 'Project', cell: (row: { projectSlug: string }) => row.projectSlug };
 export const localeColumn = { key: 'locale', header: 'Locale', cell: (row: { locale: string }) => row.locale };
