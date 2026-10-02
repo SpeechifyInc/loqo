@@ -38,17 +38,16 @@ if ! secret_exists DATABASE_URL; then
   put_secret DATABASE_URL "postgres://$LOQO_SERVICE:$password@/$LOQO_SERVICE?host=/cloudsql/$CLOUDSQL_CONNECTION"
 fi
 
-# The rest come from the environment; a provider key left unset is simply not mounted.
-for env_name in GOOGLE_CLIENT_SECRET OPENAI_API_KEY ANTHROPIC_API_KEY; do
-  if ! secret_exists "$env_name" && [ -n "${!env_name:-}" ]; then put_secret "$env_name" "${!env_name}"; fi
+# The rest come from the environment.
+for env_name in "${SECRET_ENV[@]}"; do
+  secret_exists "$env_name" && continue
+  [ -n "${!env_name:-}" ] || { echo "Set $env_name (or drop it from LOQO_SECRETS) and re-run." >&2; exit 1; }
+  put_secret "$env_name" "${!env_name}"
 done
-secret_exists GOOGLE_CLIENT_SECRET || { echo "Set GOOGLE_CLIENT_SECRET and re-run." >&2; exit 1; }
 
 for env_name in "${SECRET_ENV[@]}"; do
-  if secret_exists "$env_name"; then
-    gcloud secrets add-iam-policy-binding "$(secret_name "$env_name")" \
-      --member "serviceAccount:$LOQO_RUNTIME_SA" --role roles/secretmanager.secretAccessor >/dev/null
-  fi
+  gcloud secrets add-iam-policy-binding "$(secret_name "$env_name")" \
+    --member "serviceAccount:$LOQO_RUNTIME_SA" --role roles/secretmanager.secretAccessor >/dev/null
 done
 
 echo "Setup done. Deploy with deploy/cloud-run/deploy.sh."

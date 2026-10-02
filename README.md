@@ -80,8 +80,9 @@ deploy/cloud-run/deploy.sh   # every release: build, push, roll out, health chec
 | `LOQO_MIN_INSTANCES` / `LOQO_MAX_INSTANCES` | `1` / `1` | The worker needs one warm instance; every boot migrates without a lock, so keep max at 1 |
 | `LOQO_APP_URL` | the `run.app` URL | Public origin, if you map a domain |
 | `LOQO_IMAGE` | built from the checkout | Deploy a prebuilt image instead |
+| `LOQO_SECRETS` | `DATABASE_URL GOOGLE_CLIENT_SECRET OPENAI_API_KEY ANTHROPIC_API_KEY` | Variables mounted from Secret Manager as `$LOQO_SERVICE-<kebab-name>`; drop a provider you don't use |
 
-Worker tuning variables from `.env.example` are passed through when set; the provider keys and `GOOGLE_CLIENT_SECRET` are read from Secret Manager. Each instance opens `DATABASE_POOL_SIZE` + 5 connections, which must fit the instance's `max_connections`. Whoever runs `deploy.sh` needs `roles/run.admin`, `roles/artifactregistry.writer` and `roles/iam.serviceAccountUser` on the runtime service account.
+Worker tuning variables from `.env.example` are passed through when set; everything in `LOQO_SECRETS` is read from Secret Manager. Each instance opens `DATABASE_POOL_SIZE` + 5 connections, which must fit the instance's `max_connections`. Whoever runs `deploy.sh` needs `roles/run.admin`, `roles/artifactregistry.writer` and `roles/iam.serviceAccountUser` on the runtime service account.
 
 ### Local development
 

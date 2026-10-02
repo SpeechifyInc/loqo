@@ -16,8 +16,9 @@ else
 fi
 IFS=: read -r CLOUDSQL_PROJECT _ CLOUDSQL_NAME <<< "$CLOUDSQL_CONNECTION"
 
-# Mounted from Secret Manager as `<service>-<name-in-kebab-case>`, e.g. loqo-database-url.
-SECRET_ENV=(DATABASE_URL GOOGLE_CLIENT_SECRET OPENAI_API_KEY ANTHROPIC_API_KEY)
+# Mounted from Secret Manager as `<service>-<name-in-kebab-case>`, e.g. loqo-database-url. Drop a
+# provider key you don't use from LOQO_SECRETS.
+IFS=" " read -r -a SECRET_ENV <<< "${LOQO_SECRETS:-DATABASE_URL GOOGLE_CLIENT_SECRET OPENAI_API_KEY ANTHROPIC_API_KEY}"
 secret_name() { echo "$LOQO_SERVICE-$(printf %s "$1" | tr 'A-Z_' 'a-z-')"; }
 secret_exists() { gcloud secrets describe "$(secret_name "$1")" >/dev/null 2>&1; }
 
