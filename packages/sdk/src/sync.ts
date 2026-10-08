@@ -99,8 +99,8 @@ export const syncRemote = async (
   adapter: Adapter,
   options: SyncRemoteOptions = {},
 ): Promise<ApiResult<SyncRemoteResult>> => {
-  const { prune, prunePrefix, enqueue, ...apply } = options;
-  const imported = await importResources(client, slug, adapter, { prune, prunePrefix, enqueue });
+  const { prune, prunePrefix, pruneTags, enqueue, ...apply } = options;
+  const imported = await importResources(client, slug, adapter, { prune, prunePrefix, pruneTags, enqueue });
   if (!imported.ok) return imported;
   const applied = await applyTranslations(client, slug, adapter, apply);
   if (!applied.ok) return applied;

@@ -32,6 +32,7 @@ export type SyncOptions = {
   prunePrefix?: string;
   /** Prune only resources carrying every one of these tags — one collection's or one product's worth. */
   pruneTags?: string[];
+  /** Queue the pending targets of the imported resources; the rest of the project is left alone. */
   enqueue: boolean;
 };
 
@@ -280,12 +281,12 @@ export const syncProject = async (
     summary.legacyRejected = await rejectLegacyFailures(db, project, filledIds);
   }
 
-  if (options.enqueue) {
+  if (options.enqueue && seenKeys.size > 0) {
     const pending = await db
       .select({ id: targets.id })
       .from(targets)
       .innerJoin(resources, eq(resources.id, targets.resourceId))
-      .where(and(eq(resources.projectId, project.id), eq(targets.status, 'pending')))
+      .where(and(eq(resources.projectId, project.id), inArray(resources.key, [...seenKeys]), eq(targets.status, 'pending')))
       .orderBy(...QUEUE_ORDER);
     summary.enqueued = await enqueueTargets(deps.queue, db, pending.map((row) => row.id), { debounceSeconds: project.debounceSeconds });
   }

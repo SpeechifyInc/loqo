@@ -278,3 +278,20 @@ describe('paging translations', () => {
     expect(rows['paged/1:a/de']).toMatchObject({ value: 'paged/1:a-de', status: 'pending' });
   });
 });
+
+describe('enqueue on import', () => {
+  test('queues only the imported resources\' pending targets, not the rest of the project', async () => {
+    const titled = (id: string) => ({ key: `enqueue/${id}:title`, source: `Title ${id}` });
+    await syncProject(deps, project, [titled('1'), titled('2')], { prune: false, enqueue: false });
+    const queued: string[] = [];
+    const queue: TranslateQueue = { ...noopQueue, enqueue: async (jobs) => void queued.push(...jobs.map((job) => job.targetId)) };
+
+    const summary = await syncProject({ db, queue }, project, [titled('1')], { prune: false, prunePrefix: 'enqueue/1:', enqueue: true });
+
+    const keyById = new Map(
+      (await db.select({ id: targets.id, key: resources.key }).from(targets).innerJoin(resources, eq(resources.id, targets.resourceId))).map((row) => [row.id, row.key]),
+    );
+    expect(summary.enqueued).toBe(2);
+    expect(queued.map((id) => keyById.get(id))).toEqual(['enqueue/1:title', 'enqueue/1:title']);
+  });
+});

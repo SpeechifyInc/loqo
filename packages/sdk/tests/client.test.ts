@@ -120,11 +120,12 @@ describe('remote sync', () => {
   });
 
   test('a half the adapter lacks is a typed failure; syncRemote chains both halves', async () => {
-    const { client } = fakePlatform([[]]);
+    const { calls, client } = fakePlatform([[]]);
     const pullOnly = defineAdapter({ name: 'pull-only', pull: async () => ({ resources: [] }) });
     expect(await applyTranslations(client, 'cms', pullOnly)).toMatchObject({ ok: false, error: { status: 422 } });
     const both = defineAdapter({ name: 'both', pull: async () => ({ resources: [] }), push: async () => ({ written: 0 }) });
-    const synced = await syncRemote(client, 'cms', both, { prune: true });
+    const synced = await syncRemote(client, 'cms', both, { pruneTags: ['collection:pages'] });
     expect(synced.ok && synced.data.applied.pushed).toEqual({ written: 0 });
+    expect(calls.find((call) => call.url.endsWith('/import'))?.body).toMatchObject({ pruneTags: ['collection:pages'] });
   });
 });
