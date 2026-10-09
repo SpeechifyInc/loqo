@@ -57,6 +57,13 @@
       "when": 1790755778180,
       "tag": "0007_guard_brief",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1791529394312,
+      "tag": "0008_drop_extra_instructions",
+      "breakpoints": true
     }
   ]
 }

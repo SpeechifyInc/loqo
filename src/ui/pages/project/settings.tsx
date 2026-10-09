@@ -13,7 +13,7 @@ import { api } from '../../lib/api';
 import { ME_KEY, useCan } from '../../lib/auth';
 import { ApiKeysSection } from './keys';
 import { MembersSection } from './members';
-import { GlossaryEditor, glossaryDraft, glossaryOf, InstructionsEditor, instructionsDraft, instructionsOf } from './prompt-context';
+import { GlossaryEditor, glossaryDraft, glossaryOf } from './prompt-context';
 import type { ProjectWithCounts } from '../../../core/projects/service';
 
 const GeneralSection = ({ project }: { project: ProjectWithCounts }) => {
@@ -23,7 +23,6 @@ const GeneralSection = ({ project }: { project: ProjectWithCounts }) => {
     targetLocales: project.targetLocales,
     debounceSeconds: String(project.debounceSeconds),
     glossary: glossaryDraft(project.glossary),
-    extraInstructions: instructionsDraft(project.extraInstructions),
   });
   const save = useMutation({
     mutationFn: () =>
@@ -32,7 +31,6 @@ const GeneralSection = ({ project }: { project: ProjectWithCounts }) => {
         targetLocales: form.targetLocales,
         debounceSeconds: Number(form.debounceSeconds),
         glossary: glossaryOf(form.glossary),
-        extraInstructions: instructionsOf(form.extraInstructions),
       }),
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: ['project', project.slug] });
@@ -48,7 +46,7 @@ const GeneralSection = ({ project }: { project: ProjectWithCounts }) => {
     <Card>
       <CardHeader>
         <CardTitle>General</CardTitle>
-        <CardDescription>Glossary and extra instructions are per locale and reach the translate layer as prompt context.</CardDescription>
+        <CardDescription>The glossary reaches the translate layer as prompt context.</CardDescription>
       </CardHeader>
       <CardContent>
         <form
@@ -75,10 +73,6 @@ const GeneralSection = ({ project }: { project: ProjectWithCounts }) => {
           <div className="grid gap-1.5">
             <Label>Glossary</Label>
             <GlossaryEditor value={form.glossary} locales={form.targetLocales} onChange={(glossary) => update({ glossary })} />
-          </div>
-          <div className="grid gap-1.5">
-            <Label>Extra instructions</Label>
-            <InstructionsEditor value={form.extraInstructions} locales={form.targetLocales} onChange={(extraInstructions) => update({ extraInstructions })} />
           </div>
           <ErrorNote error={save.error} />
           <div className="flex items-center justify-end gap-3">

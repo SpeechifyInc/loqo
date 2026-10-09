@@ -1,5 +1,5 @@
 import type { GlossaryEntry, Project, Resource } from '../../db/schema';
-import { localeName } from '../model/locales';
+import { ALL_LOCALES, localeName } from '../model/locales';
 import type { TemplateContext } from './template';
 
 export type NativeExample = { source: string; target: string };
@@ -10,14 +10,15 @@ const lengthBudget = (maxLength: unknown): number | null =>
 
 const glossaryTable = (glossary: GlossaryEntry[], locale: string): string => {
   const rows = glossary
-    .filter((entry) => entry.term && entry.translations[locale])
-    .map((entry) => `| ${entry.term.padEnd(12)} | ${(entry.translations[locale] ?? '').padEnd(25)} |`);
+    .map((entry) => ({ term: entry.term, translation: entry.translations[locale] ?? entry.translations[ALL_LOCALES] }))
+    .filter((entry) => entry.term && entry.translation)
+    .map((entry) => `| ${entry.term.padEnd(12)} | ${(entry.translation ?? '').padEnd(25)} |`);
   if (rows.length === 0) return '';
   return ['| English term | Preferred translation |', '|--------------|-----------------------|', ...rows].join('\n');
 };
 
 export type PromptContextInput = {
-  project: Pick<Project, 'slug' | 'name' | 'sourceLocale' | 'glossary' | 'extraInstructions'>;
+  project: Pick<Project, 'slug' | 'name' | 'sourceLocale' | 'glossary'>;
   resource: Pick<Resource, 'id' | 'key' | 'source' | 'tags' | 'meta'>;
   locale: string;
   localeNames: Record<string, string>;
@@ -35,7 +36,6 @@ export const buildPromptContext = (input: PromptContextInput): TemplateContext =
   tags: input.resource.tags,
   meta: input.resource.meta,
   glossaryTable: glossaryTable(input.project.glossary, input.locale),
-  extraInstructions: input.project.extraInstructions[input.locale] ?? '',
   lengthBudget: lengthBudget(input.resource.meta.maxLength),
   nativeExamples: input.nativeExamples,
 });

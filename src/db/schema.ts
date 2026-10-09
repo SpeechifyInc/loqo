@@ -31,8 +31,6 @@ export const projects = pgTable('projects', {
   sourceLocale: text().notNull().default('en'),
   targetLocales: text().array().notNull().default([]),
   glossary: jsonb().$type<GlossaryEntry[]>().notNull().default([]),
-  /** Per-locale free-text instructions appended to the translate layer. */
-  extraInstructions: jsonb().$type<Record<string, string>>().notNull().default({}),
   /** Cloud Tasks-style debounce: a translation waits this long so rapid edits collapse into one job. */
   debounceSeconds: integer().notNull().default(60),
   ...timestamps,

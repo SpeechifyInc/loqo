@@ -180,7 +180,7 @@ export const AddPromptDialog = ({ slug, scenarioId, onSaved, layers }: ScopedPro
       description={
         <>
           Fragments add up in position order. Variables: {'{{locale}}'}, {'{{localeName}}'}, {'{{key}}'}, {'{{source}}'}, {'{{meta.*}}'}, {'{{glossaryTable}}'},{' '}
-          {'{{extraInstructions}}'}, {'{{lengthBudget}}'}, {'{{nativeExamples}}'}; blocks: {'{{#if x}}…{{/if}}'}, {'{{#each xs}}…{{/each}}'}.
+          {'{{lengthBudget}}'}, {'{{nativeExamples}}'}; blocks: {'{{#if x}}…{{/if}}'}, {'{{#each xs}}…{{/each}}'}.
         </>
       }
       submitLabel="Create"

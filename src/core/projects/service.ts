@@ -9,7 +9,6 @@ export type ProjectInput = {
   sourceLocale?: string;
   targetLocales?: string[];
   glossary?: GlossaryEntry[];
-  extraInstructions?: Record<string, string>;
   debounceSeconds?: number;
 };
 

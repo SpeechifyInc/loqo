@@ -1,7 +1,7 @@
 import { Check, ChevronsUpDown, X } from 'lucide-react';
 import { Popover } from 'radix-ui';
 import { useState } from 'react';
-import { localeName } from '../../core/model/locales';
+import { ALL_LOCALES, localeName } from '../../core/model/locales';
 import { localeFlag } from '../lib/utils';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
@@ -24,7 +24,7 @@ const isLocale = (candidate: string): boolean => {
   }
 };
 
-const localeLabel = (locale: string): string => [localeFlag(locale), locale].filter(Boolean).join(' ');
+const localeLabel = (locale: string): string => (locale === ALL_LOCALES ? 'All languages' : [localeFlag(locale), locale].filter(Boolean).join(' '));
 
 const matches = (locale: string, needle: string): boolean => locale.includes(needle) || localeName(locale).toLowerCase().includes(needle);
 

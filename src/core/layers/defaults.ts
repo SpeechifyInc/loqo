@@ -235,8 +235,6 @@ PUNCTUATION & FORMATTING
 - Use punctuation conventions standard for the target language (e.g. full-width punctuation in Japanese; no ampersand "&" in German body prose).
 - When the source has adjacent hyperlinks (two <a> tags side by side), keep the surrounding translated text readable with appropriate spacing or hyphens (e.g. write "веб-статей", not "вебстатей").`;
 
-const EXTRA_INSTRUCTIONS = `{{#if extraInstructions}}{{extraInstructions}}{{/if}}`;
-
 const LENGTH = `{{#if lengthBudget}}### CRITICAL: Character Limits — STRICT ENFORCEMENT
 
 The value has a hard character limit of {{lengthBudget}} characters. Translations that exceed it will be REJECTED.
@@ -300,7 +298,6 @@ export const DEFAULT_PROMPTS: PromptSeed[] = [
   { name: 'translate/android', layer: 'translate', scope: 'tag', scopeRef: 'android', position: 43, body: ANDROID },
   { name: 'translate/testimonials', layer: 'translate', scope: 'tag', scopeRef: 'testimonials', position: 60, body: TESTIMONIALS },
   { name: 'translate/payment-plans', layer: 'translate', scope: 'tag', scopeRef: 'payment-plans', position: 61, body: PAYMENT_PLANS },
-  { name: 'translate/extra-instructions', layer: 'translate', scope: 'default', scopeRef: null, position: 90, body: EXTRA_INSTRUCTIONS },
   // Second pass
   { name: 'enhance/base', layer: 'enhance', scope: 'default', scopeRef: null, position: 10, body: ENHANCE_BASE },
   { name: 'enhance/email', layer: 'enhance', scope: 'tag', scopeRef: 'email', position: 40, body: EMAIL },

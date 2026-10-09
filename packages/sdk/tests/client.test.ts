@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'bun:test';
 import { applyTranslations, createClient, defineAdapter, foldTranslations, importResources, type PushResource, syncRemote, type TranslationRow } from '../src';
 
-const project = { id: 'p', slug: 'cms', name: 'CMS', sourceLocale: 'en', targetLocales: ['de'], glossary: [], extraInstructions: {}, debounceSeconds: 0, counts: { resources: 0, targets: {} } };
+const project = { id: 'p', slug: 'cms', name: 'CMS', sourceLocale: 'en', targetLocales: ['de'], glossary: [], debounceSeconds: 0, counts: { resources: 0, targets: {} } };
 
 const row = (overrides: Partial<TranslationRow>): TranslationRow => ({
   id: 't1',

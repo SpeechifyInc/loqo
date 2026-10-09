@@ -18,7 +18,6 @@ const projectInput = z.object({
   sourceLocale: z.string().min(2).default('en'),
   targetLocales: z.array(z.string().min(2)).default([]),
   glossary: z.array(glossaryEntry).default([]),
-  extraInstructions: z.record(z.string(), z.string()).default({}),
   debounceSeconds: z.number().int().min(0).max(3600).default(60),
 });
 

@@ -138,7 +138,6 @@ export type StatusCounts = Partial<Record<TargetStatus, number>>;
 export type ProjectInfo = ProjectRef & {
   id: string;
   glossary: { term: string; translations: Record<string, string> }[];
-  extraInstructions: Record<string, string>;
   debounceSeconds: number;
   counts: { resources: number; targets: StatusCounts };
 };

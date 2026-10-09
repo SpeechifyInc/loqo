@@ -122,7 +122,7 @@ describe('loqoPlugin', () => {
     apiKey: 'k',
     fetch: async (url, init) => {
       calls.push({ url, body: init?.body ? JSON.parse(String(init.body)) : undefined });
-      if (url.endsWith('/api/projects/cms')) return Response.json({ ...project, id: '1', glossary: [], extraInstructions: {}, debounceSeconds: 0 });
+      if (url.endsWith('/api/projects/cms')) return Response.json({ ...project, id: '1', glossary: [], debounceSeconds: 0 });
       if (url.includes('/translate')) return Response.json({ enqueued: 2 });
       if (url.includes('/status?')) return Response.json({ counts: { translated: 4, queued: 1 }, digest: 'abc' });
       return Response.json({ pulled: 0, created: 0, updated: 0, unchanged: 0, removed: 0, legacyImported: 0, legacyRejected: 0, pinned: 0, enqueued: 0, duplicates: [] });

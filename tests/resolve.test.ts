@@ -56,7 +56,7 @@ const guardRow = (overrides: Partial<GuardRow> & Pick<GuardRow, 'id' | 'name' | 
 
 const scenario = (overrides: Partial<Scenario> & Pick<Scenario, 'id' | 'projectId' | 'tags'>): Scenario => ({ name: overrides.id, builtin: false, createdAt: now, updatedAt: now, ...overrides });
 
-const context: TemplateContext = { locale: 'de', localeName: 'German', sourceLocale: 'en', sourceLocaleName: 'English', project: { slug: 'p', name: 'P' }, key: 'k', source: 'Hello', tags: ['ios'], meta: {}, glossaryTable: '', extraInstructions: '', lengthBudget: null, nativeExamples: [] };
+const context: TemplateContext = { locale: 'de', localeName: 'German', sourceLocale: 'en', sourceLocaleName: 'English', project: { slug: 'p', name: 'P' }, key: 'k', source: 'Hello', tags: ['ios'], meta: {}, glossaryTable: '', lengthBudget: null, nativeExamples: [] };
 
 const ios = scenario({ id: 'sc-ios', projectId: 'p1', tags: ['ios'] });
 const releases = scenario({ id: 'sc-rel', projectId: 'p1', tags: ['ios', 'ios-releases'] });
